@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="board" id="board">
-            <div class="cell"  data-cell></div>
-            <div class="cell"  data-cell></div>
-            <div class="cell"  data-cell></div>
-            <div class="cell"  data-cell></div>
-            <div class="cell "  data-cell></div>
-            <div class="cell"  data-cell></div>
-            <div class="cell "  data-cell></div>
-            <div class="cell"  data-cell></div>
-            <div class="cell "  data-cell></div>
-        </div>
-        <div class="styled">
-            <select >
-                <option selected >2P</option>
-                <option  >1P</option>
-            </select>
-          </div>
-          </div>
-    </div>
-        <div class="message" id="message">
-            <div text>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <table id= table>
+                <tr class="tableRow">
+                    <th class="tableHead">Player X</th>
+                    <th class="tableHead">Player O</th>
+                </tr>
+                <tr class="tableRow" id="Row">
+                    <td class="tableData" id="0">0</td>
+                    <td class="tableData" id="2">0</td>
+                </tr>
+                
+            </table>
+            <div class="board" id="board">
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell " data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell " data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell " data-cell></div>
             </div>
-            <button class="btn" id="restart">Restart</button>
+            <!-- <div class="styled">
+                <select>
+                    <option selected>2P</option>
+                    <option>1P</option>
+                </select>
+            </div> -->
         </div>
-   
+    </div>
+    <div class="message" id="message">
+        <div text></div>
+        <button class="btn" id="restart">Restart</button>
+    </div>
     <script src="js/index.js"></script>
 </body>
 </html>

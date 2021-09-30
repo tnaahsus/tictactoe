@@ -14,9 +14,12 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const message = document.getElementById('message');
 const restart = document.getElementById('restart');
 const text = document.querySelector('[text]')
-
 const board = document.getElementById('board');
+let row = document.getElementById('Row');
+
 let oTurn //turn check
+
+
 
 
 // calling main function
@@ -45,7 +48,8 @@ function handleClick(e) {
     const currentClass = oTurn ? o : x
     placeMark(cell, currentClass);
     if (checkWin(currentClass)) {
-        endGame(false)
+        endGame(false);
+        checkstatus(currentClass)
     }
     else if (checkDraw()) {
         endGame(true)
@@ -55,6 +59,27 @@ function handleClick(e) {
     }
 }
 
+// to check score
+let statusNumberx = 0;
+let statusNumbero = 0;
+function checkstatus(currentStatus,drawStatus) {
+    if (currentStatus == x ) {
+        console.log('x is winner')
+        let row0 = document.getElementById('0');
+        let string0 = `${statusNumberx + 1}`;
+        // console.log(parameterElement);
+        row0.innerHTML = string0;
+        statusNumberx++;
+    }
+    else if (currentStatus == o ) {
+        console.log('o is winner')
+        let row2 = document.getElementById('2');
+        let string2 = `${statusNumbero + 1}`;
+        // console.log(parameterElement);
+        row2.innerHTML = string2;
+        statusNumbero++;
+    }
+}
 // to check draw
 function checkDraw() {
     return [...cellElements].every(cell => {
