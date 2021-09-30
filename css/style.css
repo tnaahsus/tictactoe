@@ -4,25 +4,33 @@
 
 :root {
     --cell-size: 150px;
+    --small-size: 90px;
     --mark-size: calc(var(--cell-size)*.9);
 }
 
 body {
-    margin: 0;
+    background-color: rgb(0, 0, 0);
     overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
 }
 
 /* board&cells */
 
 .board {
-    width: 100vw;
-    height: 100vh;
+    width: 90vw;
+    height: 90vh;
     display: grid;
     justify-content: center;
     align-content: center;
     align-items: center;
     grid-template-columns: repeat(3, auto);
     background-color: rgba(0, 0, 0, 0.952);
+    /* margin-top: 500px; */
 }
 
 .cell {
@@ -63,7 +71,7 @@ body {
     cursor: pointer;
 }
 
-.cell.x::before {
+.cell.x::before, .cell.x::after {
     content: '×';
     color: #F2EBD3;
     font-size: 200px;
@@ -79,12 +87,38 @@ body {
     cursor: pointer;
 }
 
-.cell.o::before {
+.cell.o::before, .cell.o::after {
     content: '○';
-    color: #F2EBD3;
+    color: #ececec;
     font-size: 220px;
     position: absolute;
     margin-bottom: 30px;
+}
+
+.styled select {
+    background: transparent;
+    width: 150px;
+    font-size: 20px;
+    border: 1px solid rgba(204, 204, 204, 0.568);
+    background-color: rgba(0, 0, 0, 0.836);
+    color: rgb(255, 254, 254);
+    height: 34px;
+    text-align: center;
+}
+
+.styled {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-left: 400px;
+    width: 100px;
+    height: 34px;
+    border: 2px solid #111;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    color: rgb(247, 240, 240);
+    margin-top: -65px;
 }
 
 /* winning message */
@@ -99,6 +133,7 @@ body {
     background-color: rgba(36, 35, 35, 0.911);
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: rgb(247, 240, 240);
     font-size: 5rem;
     flex-direction: column;
@@ -109,15 +144,65 @@ body {
     background-color: rgb(0, 0, 0);
     border: 1px solid rgb(255, 255, 255);
     color: rgb(247, 240, 240);
-    padding: .25em .5em;
+    padding: .10em .3em;
     border-radius: 10px;
     cursor: pointer;
 }
+
 .message button:hover {
     background-color: rgb(240, 240, 240);
     color: rgba(14, 13, 13, 0.185);
     border-color: rgba(228, 228, 228, 0.61);
-  }
+}
+
 .message.show {
     display: flex;
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 100px;
+        height: 200px;
+        
+    }
+    .board{
+        width: 50vw;
+        height: 50vh;
+        margin-top: 100px;
+        margin-left: 90%;
+    }
+    .styled{
+        margin-left: 0;
+        margin-top: 30px;
+        width: 70px;
+        
+    }
+    .cell {
+        width: var(--small-size);
+        height: var(--small-size);
+    }
+    .cell.x::before, .cell.x::after {
+        font-size: 100px;
+    }
+    .cell.o::before, .cell.o::after {
+        font-size: 125px;
+        margin-top: 20px;
+    }
+    .message {
+        font-size: 2rem;
+    }
+    .message .btn {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 290px){
+    .container {
+        width: 40px;
+        height: 80px;
+    }
+    .board{
+        margin-top: 100px;
+        margin-left: 60px;
+    }
 }

@@ -14,16 +14,21 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const message = document.getElementById('message');
 const restart = document.getElementById('restart');
 const text = document.querySelector('[text]')
+
 const board = document.getElementById('board');
-let oTurn
+let oTurn //turn check
 
 
+// calling main function
 startGame();
 
+
+// restart button
 restart.addEventListener('click', startGame);
 
+// main function
 function startGame() {
-    oTurn = false
+    oTurn = false;
     cellElements.forEach(cell => {
         cell.classList.remove(x)
         cell.classList.remove(o)
@@ -34,6 +39,7 @@ function startGame() {
     message.classList.remove('show')
 }
 
+// for x & 0 
 function handleClick(e) {
     const cell = e.target
     const currentClass = oTurn ? o : x
@@ -49,12 +55,14 @@ function handleClick(e) {
     }
 }
 
+// to check draw
 function checkDraw() {
     return [...cellElements].every(cell => {
         return cell.classList.contains(x) || cell.classList.contains(o)
     })
 }
 
+// to check win
 function checkWin(currentClass) {
     return WINNING_COMBINATIONS.some(combination => {
         return combination.every(index => {
@@ -63,6 +71,7 @@ function checkWin(currentClass) {
     })
 }
 
+// to check if the game has ended
 function endGame(draw) {
     if (draw) {
         text.innerText = `Draw!!`
@@ -73,16 +82,18 @@ function endGame(draw) {
     message.classList.add('show')
 }
 
+// to add x & 0 at correct place
 function placeMark(cell, currentClass) {
     // console.log('clicked')
     cell.classList.add(currentClass)
 }
 
+// to swap turns between x & o
 function swapTurn() {
     oTurn = !oTurn
 }
 
-
+// for hovering feature
 function setBoardHover() {
     board.classList.remove(x)
     board.classList.remove(o)
